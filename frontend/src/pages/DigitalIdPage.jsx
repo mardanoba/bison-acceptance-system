@@ -9,7 +9,7 @@ function DigitalIdPage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`https://bison-backend-lq75.onrender.com/api/user/work/${workId}`);
+        const res = await fetch(`https://bison-acceptance-system.onrender.com//api/user/work/${workId}`);
         if (!res.ok) throw new Error("User not found");
         const data = await res.json();
         setUser(data);
@@ -128,7 +128,7 @@ function DigitalIdPage() {
 
         {user.photo && (
           <img
-            src={`https://bison-backend-lq75.onrender.com/uploads/${user.photo}`}
+            src={`https://bison-acceptance-system.onrender.com//uploads/${user.photo}`}
             alt={user.full_name}
             style={photoStyle}
           />
