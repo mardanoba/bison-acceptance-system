@@ -20,7 +20,7 @@ export default function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("https://bison-backend-lq75.onrender.com", {
+    const res = await fetch("https://bison-backend-lq75.onrender.com/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

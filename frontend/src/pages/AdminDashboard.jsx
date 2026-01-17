@@ -41,7 +41,7 @@ export default function AdminDashboard() {
     for (let key in formData) data.append(key, formData[key]);
 
     try {
-      const res = await fetch("https://bison-backend-lq75.onrender.com", {
+      const res = await fetch("https://bison-backend-lq75.onrender.com/api/admin/add-user", {
         method: "POST",
         headers: { Authorization: "Bearer " + token },
         body: data,
