@@ -137,4 +137,8 @@ app.get("/api/user/work/:work_id", (req, res) => {
 });
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 // --------------------- START SERVER ---------------------
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is working" });
+});
+
 app.listen(5000, () => console.log("Server running on http://localhost:5000"));
