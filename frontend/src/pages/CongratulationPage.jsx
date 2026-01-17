@@ -11,7 +11,7 @@ function CongratulationPage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/user/passport/${passportId}`);
+        const res = await fetch(`https://bison-backend.onrender.com/api/user/passport/${passportId}`);
         if (!res.ok) throw new Error("User not found");
         const data = await res.json();
         setUser(data);
@@ -139,7 +139,7 @@ function CongratulationPage() {
 
         {user.photo && (
           <img
-            src={`http://localhost:5000/uploads/${user.photo}`}
+            src={`https://bison-backend.onrender.com/uploads/${user.photo}`}
             alt={user.full_name}
             style={photoStyle}
           />
