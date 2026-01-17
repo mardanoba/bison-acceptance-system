@@ -25,7 +25,7 @@ function WelcomePage() {
 
     try {
       const res = await fetch(
-        `https://bison-acceptance-system.onrender.com//api/user/passport/${passportId}`
+        `https://bison-acceptance-system.onrender.com/api/user/passport/${passportId}`
       );
       if (!res.ok) throw new Error("User not found");
 
