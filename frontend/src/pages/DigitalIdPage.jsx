@@ -27,6 +27,7 @@ function DigitalIdPage() {
     backgroundColor: "#f0f2f5",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     padding: "20px",
@@ -43,6 +44,7 @@ function DigitalIdPage() {
     textAlign: "left",
     position: "relative",
     padding: "20px",
+    marginBottom: "20px", // space for button below
   };
 
   const header = {
@@ -76,7 +78,7 @@ function DigitalIdPage() {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     gap: "8px 20px",
-    marginBottom: "20px",
+    marginBottom: "10px",
     fontSize: "15px",
     color: "#2c3e50",
   };
@@ -85,7 +87,7 @@ function DigitalIdPage() {
   const detailValue = { fontWeight: "400" };
 
   const buttonStyle = {
-    width: "100%",
+    width: "200px",
     padding: "12px",
     fontSize: "16px",
     fontWeight: "600",
@@ -138,7 +140,7 @@ function DigitalIdPage() {
     <div style={pageStyle}>
       <div style={idCard}>
         <div style={header}>Bison Transport - Digital ID</div>
-        <img src="/assets/b.webp" alt="Bison Logo" style={logoStyle} />
+        <img src="/images/bison-logo.webp" alt="Bison Logo" style={logoStyle} />
         {user.photo && (
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
             <img
@@ -175,12 +177,17 @@ function DigitalIdPage() {
           </div>
         </div>
         <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
-      
-        
       </div>
-        <button style={buttonStyle} onMouseOver={hoverButton} onMouseOut={outButton} onClick={() => window.print()}>
-          Print Digital ID
-          </button>
+
+      {/* Print button outside the card */}
+      <button
+        style={buttonStyle}
+        onMouseOver={hoverButton}
+        onMouseOut={outButton}
+        onClick={() => window.print()}
+      >
+        Print Digital ID
+      </button>
     </div>
   );
 }
