@@ -14,7 +14,8 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+const FRONTEND_URL = "https://bison-acceptance-system.vercel.app"; // <-- Deployed frontend URL
+app.use(cors({ origin: FRONTEND_URL })); // allow only frontend to access API
 app.use(express.json());
 
 // Ensure uploads folder exists
@@ -50,9 +51,8 @@ function verifyAdmin(req, res, next) {
 app.post("/api/admin/login", (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
+  if (!username || !password)
     return res.status(400).json({ message: "Please provide username and password" });
-  }
 
   const query = "SELECT * FROM admins WHERE username = ?";
 
@@ -88,13 +88,13 @@ app.post("/api/admin/add-user", verifyAdmin, upload.single("photo"), (req, res) 
     VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
-  db.query(query, [uuid, full_name, passport_id, work_id, work_type, sex, photo], (err, result) => {
+  db.query(query, [uuid, full_name, passport_id, work_id, work_type, sex, photo], (err) => {
     if (err) return res.status(500).json({ message: err.message });
 
-    // FIXED LINK: points to the correct Welcome Page route
+    // FIXED LINK: Use deployed frontend URL
     res.json({
       message: "User added successfully",
-      link: `http://localhost:5173/welcome/${uuid}` // <-- changed from /accept
+      link: `${FRONTEND_URL}/welcome/${uuid}`, // <-- Correct public link
     });
   });
 });
@@ -135,16 +135,16 @@ app.get("/api/user/work/:work_id", (req, res) => {
     res.json(result[0]);
   });
 });
+
+// Serve uploaded photos
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
-// --------------------- START SERVER ---------------------
-app.get("/", (req, res) => {
-  res.json({ message: "Backend is working" });
-});
-app.get("/api/test", (req, res) => {
-  res.json({ message: "Backend is working!" });
-});
+
+// Test endpoints
+app.get("/", (req, res) => res.json({ message: "Backend is working" }));
+app.get("/api/test", (req, res) => res.json({ message: "Backend is working!" }));
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
