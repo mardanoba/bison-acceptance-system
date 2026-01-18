@@ -76,7 +76,8 @@ function CongratulationPage() {
   return (
     <div style={pageStyle}>
       <div style={container}>
-        <h1 style={header}>Congratulations, {user.full_name}!</h1>
+        <h1 style={header}>Congratulations, {user.full_name}! </h1>
+        <h2>You have been accepted to our company!</h2>
         {user.photo && <img src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`} alt={user.full_name} style={photoStyle} />}
         <div style={detailStyle}>
           <p><strong>Full Name:</strong> {user.full_name}</p>
