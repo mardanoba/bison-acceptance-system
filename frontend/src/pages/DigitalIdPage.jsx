@@ -171,10 +171,6 @@ function DigitalIdPage() {
             <span style={detailLabel}>Sex:</span>{" "}
             <span style={detailValue}>{user.sex}</span>
           </div>
-          <div>
-            <span style={detailLabel}>UUID:</span>{" "}
-            <span style={detailValue}>{user.uuid}</span>
-          </div>
         </div>
         <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
       </div>
