@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import logo from "../assets/b.webp"; // <-- Import your local image
 
 function DigitalIdPage() {
   const { workId } = useParams();
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
-  // Fetch user data
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`https://bison-acceptance-system.onrender.com/api/user/work/${workId}`);
+        const res = await fetch(
+          `https://bison-acceptance-system.onrender.com/api/user/work/${workId}`
+        );
         if (!res.ok) throw new Error("User not found");
         const data = await res.json();
         setUser(data);
@@ -24,10 +26,10 @@ function DigitalIdPage() {
   // ---------- Styles ----------
   const pageStyle = {
     minHeight: "100vh",
-    backgroundColor: "#f0f2f5",
+    backgroundColor: "#FFF8E7",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column", // so button can be outside
     justifyContent: "center",
     alignItems: "center",
     padding: "20px",
@@ -35,60 +37,52 @@ function DigitalIdPage() {
 
   const idCard = {
     width: "100%",
-    maxWidth: "500px",
+    maxWidth: "600px",
     backgroundColor: "#fff",
-    borderRadius: "15px",
     border: "2px solid #2980b9",
+    borderRadius: "15px",
     boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-    overflow: "hidden",
-    textAlign: "left",
-    position: "relative",
-    padding: "20px",
-    marginBottom: "20px", // space for button below
+    padding: "30px",
+    textAlign: "center",
+    margin: "10px",
   };
 
-  const header = {
+  const idHeader = {
     backgroundColor: "#2980b9",
     color: "#fff",
-    textAlign: "center",
-    fontWeight: "700",
-    fontSize: "20px",
-    padding: "12px",
+    padding: "15px 0",
     borderRadius: "10px 10px 0 0",
-    marginBottom: "15px",
+    fontSize: "22px",
+    fontWeight: "700",
+    marginBottom: "20px",
   };
 
   const logoStyle = {
-    width: "50px",
-    position: "absolute",
-    top: "15px",
-    right: "15px",
-  };
-
-  const photoStyle = {
-    width: "120px",
-    height: "120px",
-    borderRadius: "10px",
-    border: "2px solid #2980b9",
-    objectFit: "cover",
+    width: "100px",
     marginBottom: "15px",
   };
 
-  const detailsContainer = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "8px 20px",
-    marginBottom: "10px",
-    fontSize: "15px",
-    color: "#2c3e50",
+  const photoStyle = {
+    width: "100%",
+    maxWidth: "150px",
+    borderRadius: "10px",
+    border: "2px solid #2980b9",
+    marginBottom: "20px",
   };
 
-  const detailLabel = { fontWeight: "600" };
-  const detailValue = { fontWeight: "400" };
+  const detailsContainer = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    margin: "0 auto 20px",
+    maxWidth: "100%",
+    gap: "8px",
+    color: "#34495e",
+    fontSize: "16px",
+  };
 
   const buttonStyle = {
-    width: "200px",
-    padding: "12px",
+    padding: "12px 25px",
     fontSize: "16px",
     fontWeight: "600",
     borderRadius: "8px",
@@ -97,6 +91,7 @@ function DigitalIdPage() {
     backgroundColor: "#2980b9",
     color: "#fff",
     transition: "all 0.3s",
+    marginTop: "20px",
   };
 
   const hoverButton = (e) => (e.target.style.backgroundColor = "#1F618D");
@@ -109,19 +104,14 @@ function DigitalIdPage() {
     marginTop: "50px",
   };
 
-  const messageStyle = {
-    marginTop: "10px",
-    fontStyle: "italic",
-    color: "#34495e",
-    textAlign: "center",
-  };
+  const messageStyle = { marginTop: "15px", fontStyle: "italic", color: "#34495e" };
 
   // ---------- Render ----------
   if (error)
     return (
       <div style={pageStyle}>
         <div style={idCard}>
-          <h2 style={{ ...header, backgroundColor: "#c0392b" }}>Error</h2>
+          <h2 style={{ ...idHeader, backgroundColor: "#c0392b" }}>Error</h2>
           <p style={errorStyle}>{error}</p>
         </div>
       </div>
@@ -139,43 +129,47 @@ function DigitalIdPage() {
   return (
     <div style={pageStyle}>
       <div style={idCard}>
-        <div style={header}>Bison Transport - Digital ID</div>
-        <img src="..assets/b.webp" alt="Bison Logo" style={logoStyle} />
+        {/* Bison Logo */}
+        <img src={logo} alt="Bison Logo" style={logoStyle} />
+
+        {/* ID Header */}
+        <div style={idHeader}>Bison Transport - Digital ID</div>
+
+        {/* User Photo */}
         {user.photo && (
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
-            <img
-              src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`}
-              alt={user.full_name}
-              style={photoStyle}
-            />
-          </div>
+          <img
+            src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`}
+            alt={user.full_name}
+            style={photoStyle}
+          />
         )}
+
+        {/* User Details */}
         <div style={detailsContainer}>
-          <div>
-            <span style={detailLabel}>Full Name:</span>{" "}
-            <span style={detailValue}>{user.full_name}</span>
-          </div>
-          <div>
-            <span style={detailLabel}>Passport ID:</span>{" "}
-            <span style={detailValue}>{user.passport_id}</span>
-          </div>
-          <div>
-            <span style={detailLabel}>Work ID:</span>{" "}
-            <span style={detailValue}>{user.work_id}</span>
-          </div>
-          <div>
-            <span style={detailLabel}>Work Type:</span>{" "}
-            <span style={detailValue}>{user.work_type}</span>
-          </div>
-          <div>
-            <span style={detailLabel}>Sex:</span>{" "}
-            <span style={detailValue}>{user.sex}</span>
-          </div>
+          <p>
+            <strong>Full Name:</strong> {user.full_name}
+          </p>
+          <p>
+            <strong>Passport ID:</strong> {user.passport_id}
+          </p>
+          <p>
+            <strong>Work ID:</strong> {user.work_id}
+          </p>
+          <p>
+            <strong>Work Type:</strong> {user.work_type}
+          </p>
+          <p>
+            <strong>Sex:</strong> {user.sex}
+          </p>
+          <p>
+            <strong>UUID:</strong> {user.uuid}
+          </p>
         </div>
+
         <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
       </div>
 
-      {/* Print button outside the card */}
+      {/* Print button outside ID card */}
       <button
         style={buttonStyle}
         onMouseOver={hoverButton}
