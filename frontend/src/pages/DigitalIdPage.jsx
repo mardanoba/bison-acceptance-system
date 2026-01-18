@@ -140,7 +140,7 @@ function DigitalIdPage() {
     <div style={pageStyle}>
       <div style={idCard}>
         <div style={header}>Bison Transport - Digital ID</div>
-        <img src="/images/bison-logo.webp" alt="Bison Logo" style={logoStyle} />
+        <img src=".assets/b.webp" alt="Bison Logo" style={logoStyle} />
         {user.photo && (
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
             <img
