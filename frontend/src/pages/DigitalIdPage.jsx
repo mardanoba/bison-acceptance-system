@@ -175,10 +175,12 @@ function DigitalIdPage() {
           </div>
         </div>
         <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
+      
+        
+      </div>
         <button style={buttonStyle} onMouseOver={hoverButton} onMouseOut={outButton} onClick={() => window.print()}>
           Print Digital ID
-        </button>
-      </div>
+          </button>
     </div>
   );
 }
