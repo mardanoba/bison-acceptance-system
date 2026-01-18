@@ -6,6 +6,7 @@ function DigitalIdPage() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
+  // Fetch user data
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -20,47 +21,163 @@ function DigitalIdPage() {
     fetchUser();
   }, [workId]);
 
-  const pageStyle = { minHeight: "100vh", backgroundColor: "#FFF8E7", fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", display: "flex", justifyContent: "center", alignItems: "center", padding: "20px" };
-  const idCard = { width: "100%", maxWidth: "600px", backgroundColor: "#fff", border: "2px solid #2980b9", borderRadius: "15px", boxShadow: "0 8px 20px rgba(0,0,0,0.2)", padding: "30px", textAlign: "center", margin: "10px" };
-  const idHeader = { backgroundColor: "#2980b9", color: "#fff", padding: "15px 0", borderRadius: "10px 10px 0 0", fontSize: "22px", fontWeight: "700", marginBottom: "20px" };
-  const photoStyle = { width: "100%", maxWidth: "150px", borderRadius: "10px", border: "2px solid #2980b9", marginBottom: "20px" };
-  const detailsContainer = { display: "flex", flexDirection: "column", alignItems: "flex-start", margin: "0 auto 20px", maxWidth: "100%", gap: "8px", color: "#34495e", fontSize: "16px" };
-  const buttonStyle = { padding: "12px 25px", fontSize: "16px", fontWeight: "600", borderRadius: "8px", border: "none", cursor: "pointer", backgroundColor: "#2980b9", color: "#fff", transition: "all 0.3s", marginTop: "15px" };
+  // ---------- Styles ----------
+  const pageStyle = {
+    minHeight: "100vh",
+    backgroundColor: "#f0f2f5",
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+  };
+
+  const idCard = {
+    width: "100%",
+    maxWidth: "500px",
+    backgroundColor: "#fff",
+    borderRadius: "15px",
+    border: "2px solid #2980b9",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+    overflow: "hidden",
+    textAlign: "left",
+    position: "relative",
+    padding: "20px",
+  };
+
+  const header = {
+    backgroundColor: "#2980b9",
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "700",
+    fontSize: "20px",
+    padding: "12px",
+    borderRadius: "10px 10px 0 0",
+    marginBottom: "15px",
+  };
+
+  const logoStyle = {
+    width: "50px",
+    position: "absolute",
+    top: "15px",
+    right: "15px",
+  };
+
+  const photoStyle = {
+    width: "120px",
+    height: "120px",
+    borderRadius: "10px",
+    border: "2px solid #2980b9",
+    objectFit: "cover",
+    marginBottom: "15px",
+  };
+
+  const detailsContainer = {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "8px 20px",
+    marginBottom: "20px",
+    fontSize: "15px",
+    color: "#2c3e50",
+  };
+
+  const detailLabel = { fontWeight: "600" };
+  const detailValue = { fontWeight: "400" };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "12px",
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "8px",
+    border: "none",
+    cursor: "pointer",
+    backgroundColor: "#2980b9",
+    color: "#fff",
+    transition: "all 0.3s",
+  };
+
   const hoverButton = (e) => (e.target.style.backgroundColor = "#1F618D");
   const outButton = (e) => (e.target.style.backgroundColor = "#2980b9");
-  const errorStyle = { color: "#c0392b", fontWeight: "bold", textAlign: "center", marginTop: "50px" };
-  const messageStyle = { marginTop: "15px", fontStyle: "italic", color: "#34495e" };
 
-  if (error) return (
-    <div style={pageStyle}>
-      <div style={idCard}>
-        <h2 style={{ ...idHeader, backgroundColor: "#c0392b" }}>Error</h2>
-        <p style={errorStyle}>{error}</p>
+  const errorStyle = {
+    color: "#c0392b",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: "50px",
+  };
+
+  const messageStyle = {
+    marginTop: "10px",
+    fontStyle: "italic",
+    color: "#34495e",
+    textAlign: "center",
+  };
+
+  // ---------- Render ----------
+  if (error)
+    return (
+      <div style={pageStyle}>
+        <div style={idCard}>
+          <h2 style={{ ...header, backgroundColor: "#c0392b" }}>Error</h2>
+          <p style={errorStyle}>{error}</p>
+        </div>
       </div>
-    </div>
-  );
+    );
 
-  if (!user) return (
-    <div style={pageStyle}>
-      <div style={idCard}><p>Loading digital ID...</p></div>
-    </div>
-  );
+  if (!user)
+    return (
+      <div style={pageStyle}>
+        <div style={idCard}>
+          <p>Loading digital ID...</p>
+        </div>
+      </div>
+    );
 
   return (
     <div style={pageStyle}>
       <div style={idCard}>
-        <div style={idHeader}>Bison Transport - Digital ID</div>
-        {user.photo && <img src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`} alt={user.full_name} style={photoStyle} />}
+        <div style={header}>Bison Transport - Digital ID</div>
+        <img src="/images/bison-logo.webp" alt="Bison Logo" style={logoStyle} />
+        {user.photo && (
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
+            <img
+              src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`}
+              alt={user.full_name}
+              style={photoStyle}
+            />
+          </div>
+        )}
         <div style={detailsContainer}>
-          <p><strong>Full Name:</strong> {user.full_name}</p>
-          <p><strong>Passport ID:</strong> {user.passport_id}</p>
-          <p><strong>Work ID:</strong> {user.work_id}</p>
-          <p><strong>Work Type:</strong> {user.work_type}</p>
-          <p><strong>Sex:</strong> {user.sex}</p>
-          <p><strong>UUID:</strong> {user.uuid}</p>
+          <div>
+            <span style={detailLabel}>Full Name:</span>{" "}
+            <span style={detailValue}>{user.full_name}</span>
+          </div>
+          <div>
+            <span style={detailLabel}>Passport ID:</span>{" "}
+            <span style={detailValue}>{user.passport_id}</span>
+          </div>
+          <div>
+            <span style={detailLabel}>Work ID:</span>{" "}
+            <span style={detailValue}>{user.work_id}</span>
+          </div>
+          <div>
+            <span style={detailLabel}>Work Type:</span>{" "}
+            <span style={detailValue}>{user.work_type}</span>
+          </div>
+          <div>
+            <span style={detailLabel}>Sex:</span>{" "}
+            <span style={detailValue}>{user.sex}</span>
+          </div>
+          <div>
+            <span style={detailLabel}>UUID:</span>{" "}
+            <span style={detailValue}>{user.uuid}</span>
+          </div>
         </div>
         <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
-        <button style={buttonStyle} onMouseOver={hoverButton} onMouseOut={outButton} onClick={() => window.print()}>Print Digital ID</button>
+        <button style={buttonStyle} onMouseOver={hoverButton} onMouseOut={outButton} onClick={() => window.print()}>
+          Print Digital ID
+        </button>
       </div>
     </div>
   );
