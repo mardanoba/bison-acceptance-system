@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/b.webp"; // <-- Import your local image
+import logo from "../assets/b.webp";
 
 function DigitalIdPage() {
   const { workId } = useParams();
@@ -23,159 +23,169 @@ function DigitalIdPage() {
     fetchUser();
   }, [workId]);
 
-  // ---------- Styles ----------
+  /* ---------------- STYLES ---------------- */
+
   const pageStyle = {
     minHeight: "100vh",
-    backgroundColor: "#FFF8E7",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    backgroundColor: "#f4f6f8",
     display: "flex",
-    flexDirection: "column", // so button can be outside
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    fontFamily: "Segoe UI, sans-serif",
     padding: "20px",
   };
 
   const idCard = {
     width: "100%",
-    maxWidth: "600px",
-    backgroundColor: "#fff",
-    border: "2px solid #2980b9",
-    borderRadius: "15px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-    padding: "30px",
-    textAlign: "center",
-    margin: "10px",
+    maxWidth: "700px",
+    backgroundColor: "#ffffff",
+    borderRadius: "12px",
+    border: "1px solid #dcdcdc",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
+    overflow: "hidden",
   };
 
-  const idHeader = {
-    backgroundColor: "#2980b9",
-    color: "#fff",
-    padding: "15px 0",
-    borderRadius: "10px 10px 0 0",
-    fontSize: "22px",
-    fontWeight: "700",
-    marginBottom: "20px",
+  const header = {
+    backgroundColor: "#0B3C5D",
+    color: "#ffffff",
+    display: "flex",
+    alignItems: "center",
+    padding: "15px 20px",
+    gap: "15px",
   };
 
   const logoStyle = {
-    width: "100px",
-    marginBottom: "15px",
+    width: "60px",
+    height: "60px",
+    objectFit: "contain",
+    backgroundColor: "#fff",
+    borderRadius: "6px",
+    padding: "5px",
+  };
+
+  const headerText = {
+    textAlign: "left",
+  };
+
+  const body = {
+    display: "flex",
+    padding: "25px",
+    gap: "25px",
   };
 
   const photoStyle = {
-    width: "100%",
-    maxWidth: "150px",
-    borderRadius: "10px",
-    border: "2px solid #2980b9",
-    marginBottom: "20px",
+    width: "160px",
+    height: "200px",
+    objectFit: "cover",
+    borderRadius: "8px",
+    border: "2px solid #0B3C5D",
   };
 
-  const detailsContainer = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    margin: "0 auto 20px",
-    maxWidth: "100%",
-    gap: "8px",
+  const details = {
+    flex: 1,
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "12px 20px",
+    fontSize: "15px",
+    color: "#2c3e50",
+  };
+
+  const label = {
+    fontWeight: "600",
     color: "#34495e",
-    fontSize: "16px",
+  };
+
+  const footer = {
+    borderTop: "1px solid #eee",
+    padding: "12px 20px",
+    fontSize: "13px",
+    color: "#555",
+    textAlign: "center",
+    backgroundColor: "#fafafa",
   };
 
   const buttonStyle = {
-    padding: "12px 25px",
+    marginTop: "25px",
+    padding: "12px 30px",
     fontSize: "16px",
     fontWeight: "600",
     borderRadius: "8px",
     border: "none",
     cursor: "pointer",
-    backgroundColor: "#2980b9",
+    backgroundColor: "#0B3C5D",
     color: "#fff",
-    transition: "all 0.3s",
-    marginTop: "20px",
   };
 
-  const hoverButton = (e) => (e.target.style.backgroundColor = "#1F618D");
-  const outButton = (e) => (e.target.style.backgroundColor = "#2980b9");
+  /* ---------------- RENDER ---------------- */
 
-  const errorStyle = {
-    color: "#c0392b",
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: "50px",
-  };
-
-  const messageStyle = { marginTop: "15px", fontStyle: "italic", color: "#34495e" };
-
-  // ---------- Render ----------
   if (error)
     return (
       <div style={pageStyle}>
-        <div style={idCard}>
-          <h2 style={{ ...idHeader, backgroundColor: "#c0392b" }}>Error</h2>
-          <p style={errorStyle}>{error}</p>
-        </div>
+        <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
       </div>
     );
 
   if (!user)
     return (
       <div style={pageStyle}>
-        <div style={idCard}>
-          <p>Loading digital ID...</p>
-        </div>
+        <p>Loading Digital ID...</p>
       </div>
     );
 
   return (
     <div style={pageStyle}>
       <div style={idCard}>
-        {/* Bison Logo */}
-        <img src={logo} alt="Bison Logo" style={logoStyle} />
-
-        {/* ID Header */}
-        <div style={idHeader}>Bison Transport - Digital ID</div>
-
-        {/* User Photo */}
-        {user.photo && (
-          <img
-            src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`}
-            alt={user.full_name}
-            style={photoStyle}
-          />
-        )}
-
-        {/* User Details */}
-        <div style={detailsContainer}>
-          <p>
-            <strong>Full Name:</strong> {user.full_name}
-          </p>
-          <p>
-            <strong>Passport ID:</strong> {user.passport_id}
-          </p>
-          <p>
-            <strong>Work ID:</strong> {user.work_id}
-          </p>
-          <p>
-            <strong>Work Type:</strong> {user.work_type}
-          </p>
-          <p>
-            <strong>Sex:</strong> {user.sex}
-          </p>
-          <p>
-            <strong>UUID:</strong> {user.uuid}
-          </p>
+        {/* HEADER */}
+        <div style={header}>
+          <img src={logo} alt="Bison Transport" style={logoStyle} />
+          <div style={headerText}>
+            <h2 style={{ margin: 0 }}>Bison Transport</h2>
+            <p style={{ margin: 0, fontSize: "14px" }}>
+              Official Employee Digital ID
+            </p>
+          </div>
         </div>
 
-        <p style={messageStyle}>This is your official digital ID for Bison Transport.</p>
+        {/* BODY */}
+        <div style={body}>
+          {/* PHOTO */}
+          {user.photo && (
+            <img
+              src={`https://bison-acceptance-system.onrender.com/uploads/${user.photo}`}
+              alt={user.full_name}
+              style={photoStyle}
+            />
+          )}
+
+          {/* DETAILS */}
+          <div style={details}>
+            <span style={label}>Full Name</span>
+            <span>{user.full_name}</span>
+
+            <span style={label}>Passport ID</span>
+            <span>{user.passport_id}</span>
+
+            <span style={label}>Work ID</span>
+            <span>{user.work_id}</span>
+
+            <span style={label}>Work Type</span>
+            <span>{user.work_type}</span>
+
+            <span style={label}>Sex</span>
+            <span>{user.sex}</span>
+          </div>
+        </div>
+
+        {/* FOOTER */}
+        <div style={footer}>
+          This card is the property of Bison Transport. If found, please return
+          to the company office.
+        </div>
       </div>
 
-      {/* Print button outside ID card */}
-      <button
-        style={buttonStyle}
-        onMouseOver={hoverButton}
-        onMouseOut={outButton}
-        onClick={() => window.print()}
-      >
+      {/* PRINT BUTTON OUTSIDE */}
+      <button style={buttonStyle} onClick={() => window.print()}>
         Print Digital ID
       </button>
     </div>
