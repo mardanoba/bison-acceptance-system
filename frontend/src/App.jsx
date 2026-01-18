@@ -1,6 +1,5 @@
 // src/App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import logo from "./assets/b.webp"; 
 
 // Admin Pages
 import AdminLogin from "./pages/AdminLogin";
@@ -22,19 +21,14 @@ function NotFound() {
   );
 }
 
-// ---------------------- ROUTES ----------------------
+// Routes
 const router = createBrowserRouter([
-  // Admin Routes
   { path: "/", element: <AdminLogin /> },
   { path: "/admin/login", element: <AdminLogin /> },
   { path: "/admin/dashboard", element: <AdminDashboard /> },
-
-  // User Routes
   { path: "/welcome/:uuid", element: <WelcomePage /> },
   { path: "/congratulations/:passportId", element: <CongratulationPage /> },
   { path: "/digital-id/:workId", element: <DigitalIdPage /> },
-
-  // Catch-all 404
   { path: "*", element: <NotFound /> },
 ]);
 
