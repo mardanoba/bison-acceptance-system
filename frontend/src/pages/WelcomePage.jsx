@@ -45,11 +45,11 @@ function WelcomePage() {
   return (
     <div style={container}>
       <img src="/images/bison.webp" alt="Bison Transport" style={imageStyle}/>
-      <h1 style={header}>Welcome to Bison Transport!</h1>
+      <h1 style={header}>Welcome to Bison Transport Canada!</h1>
       <p style={text}>This is your acceptance system. You can check your acceptance status below.</p>
       <div style={section}>
         <h2 style={subHeader}>About the Company</h2>
-        <p style={text}>Bison is North America's Trusted Supply Chain Solutions Partner... </p>
+        <p style={text}>Bison is Canada's Trusted Supply Chain Solutions Partner... </p>
         <img src="/images/bison1.webp" alt="Mission" style={imageStyle}/>
         <h3 style={subHeader}>Mission</h3>
         <p style={text}>Bison Transport's mission is to be a leading asset-based freight solutions...</p>
