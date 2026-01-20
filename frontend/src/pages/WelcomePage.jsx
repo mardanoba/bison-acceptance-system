@@ -55,7 +55,7 @@ function WelcomePage() {
         <p style={text}>Fastway's mission is to be a leading asset-based freight and delivery solutions.</p>
         <img src="/images/fastway3.webp" alt="Vision" style={imageStyle}/>
         <h3 style={subHeader}>Vision</h3>
-        <p style={text}>Bison Transport is committed to sustainability and innovation.</p>
+        <p style={text}>Fastway is committed to sustainability and innovation.</p>
       </div>
       <input type="text" placeholder="Enter your Passport ID" value={passportId} onChange={(e)=>setPassportId(e.target.value)} onFocus={inputFocus} onBlur={inputBlur} style={input}/>
       <button onClick={handleCheckStatus} style={button} onMouseOver={hoverButton} onMouseOut={outButton}>Check Status</button>
