@@ -138,9 +138,9 @@ function DigitalIdPage() {
       <div style={idCard}>
         {/* HEADER */}
         <div style={header}>
-          <img src={logo} alt="Bison Transport" style={logoStyle} />
+          <img src={logo} alt="Fastway Delivery" style={logoStyle} />
           <div style={headerText}>
-            <h2 style={{ margin: 0 }}>Bison Transport</h2>
+            <h2 style={{ margin: 0 }}>Fastway</h2>
             <p style={{ margin: 0, fontSize: "14px" }}>
               Official Employee Digital ID
             </p>
@@ -179,7 +179,7 @@ function DigitalIdPage() {
 
         {/* FOOTER */}
         <div style={footer}>
-          This card is the property of Bison Transport. If found, please return
+          This card is the property of Fastway. If found, please return
           to the company office.
         </div>
       </div>
