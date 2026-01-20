@@ -44,18 +44,18 @@ function WelcomePage() {
 
   return (
     <div style={container}>
-      <img src="/images/bison.webp" alt="Bison Transport" style={imageStyle}/>
-      <h1 style={header}>Welcome to Bison Transport Canada!</h1>
+      <img src="/images/fastway1.webp" alt="Bison Transport" style={imageStyle}/>
+      <h1 style={header}>Welcome to Fastway Ireland!</h1>
       <p style={text}>This is your acceptance system. You can check your acceptance status below.</p>
       <div style={section}>
         <h2 style={subHeader}>About the Company</h2>
-        <p style={text}>Bison is Canada's Trusted Supply Chain Solutions Partner... </p>
-        <img src="/images/bison1.webp" alt="Mission" style={imageStyle}/>
+        <p style={text}>Fastway is Ireland's Trusted Supply Chain Solutions Partner and delivery company. </p>
+        <img src="/images/fastway.webp" alt="Mission" style={imageStyle}/>
         <h3 style={subHeader}>Mission</h3>
-        <p style={text}>Bison Transport's mission is to be a leading asset-based freight solutions...</p>
-        <img src="/images/bison2.webp" alt="Vision" style={imageStyle}/>
+        <p style={text}>Fastway's mission is to be a leading asset-based freight and delivery solutions.</p>
+        <img src="/images/fastway3.webp" alt="Vision" style={imageStyle}/>
         <h3 style={subHeader}>Vision</h3>
-        <p style={text}>Bison Transport is committed to sustainability and innovation...</p>
+        <p style={text}>Bison Transport is committed to sustainability and innovation.</p>
       </div>
       <input type="text" placeholder="Enter your Passport ID" value={passportId} onChange={(e)=>setPassportId(e.target.value)} onFocus={inputFocus} onBlur={inputBlur} style={input}/>
       <button onClick={handleCheckStatus} style={button} onMouseOver={hoverButton} onMouseOut={outButton}>Check Status</button>
