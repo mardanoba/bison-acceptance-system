@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/b.webp";
+import logo from "../assets/fastway3.webp";
 
 function DigitalIdPage() {
   const { workId } = useParams();
