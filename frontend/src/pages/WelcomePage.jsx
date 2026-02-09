@@ -44,22 +44,22 @@ function WelcomePage() {
 
   return (
     <div style={container}>
-      <img src="/images/kraftheinz.webp" alt="Kraft Hienz" style={imageStyle}/>
-      <h1 style={header}>Welcome to Kraft Heinz <img src="/images/caflag.webp" alt="Canada" width="40"></img>!</h1>
+      <img src="/images/emiratesfood.webp" alt="Emirates Food" style={imageStyle}/>
+      <h1 style={header}>Welcome to Emirates Food Industries</h1>
       <p style={text}>This is your acceptance system. You can check your acceptance status below.</p>
       <div style={section}>
         <h2 style={subHeader}>About the Company</h2>
-        <p style={text}>In Canada, Kraft Heinz emphasizes flavourful, high-quality products and a commitment to community engagement and sustainability. The company’s Canadian operations align with the global mission and vision, ensuring that local consumers experience the same trusted quality and innovation as worldwide. </p>
-        <img src="/images/kraftheinz2.webp" alt="Mission" style={imageStyle}/>
+        <p style={text}>Emirates Food Industries (EFI) is one of the leading holding companies operating in the food / dairy / agriculture industries in the UAE. Headquartered in Abu Dhabi, EFI was established to support the Abu Dhabi government’s agricultural road map and food security program. EFI’s key subsidiaries include:
+-National Feed and Flour Production and Marketing Co. (NFFPM), a leading animal feed producer and distributor.
+-National Dairy Farms (NDF) and Masaken Dairy Farms (MDF), two of the largest standalone dairy farms in the UAE.
+-National Bags (NB), a leading Polypropylene bags manufacturer.
+-HAYATNA is EFI home –grown brand offers an extensive dairy product portfolio, produced 100% in the UAE. HAYATNA aims to play a major role in UAE’s food security agenda, by contributing toward establishing the country as a world-leading hub in innovation-driven food security.</p>
+        <img src="/images/emiratesfood1.png" alt="Mission" style={imageStyle}/>
         <h3 style={subHeader}>Mission</h3>
-        <p style={text}>Kraft Heinz Canada’s mission emphasizes creating joy and memorable moments through food. The company focuses on providing high-quality, trusted products that consumers know and love, from iconic brands like Heinz, Kraft, and Oscar Mayer to a wide range of condiments, meals, and snacks. 
-          The mission reflects a consumer-centric approach, ensuring that every product contributes to enjoyable eating experiences while maintaining nutritional value and quality.</p>
-        <img src="/images/kraftheinz3.jpg" alt="Vision" style={imageStyle}/>
+        <p style={text}>To develop and produce a diversified portfolio of agro-related products, technically lead the industry, continuously improve production, product quality, and increase clients’ satisfaction through optimal utilization of the company’s resources, working closely with the Abu Dhabi Food Control Authority (ADFCA) and Abu Dhabi Farmers’ Center (ADFSC).</p>
+        <img src="/images/emiratesfood2.jpg" alt="Vision" style={imageStyle}/>
         <h3 style={subHeader}>Vision</h3>
-        <p style={text}>The company’s vision is to sustainably grow by delighting more consumers globally.This vision highlights three key pillars: 
-Sustainable growth: Prioritizing long-term, responsible business practices that protect resources and support the planet.
-Consumer delight: Ensuring products meet evolving tastes and preferences, fostering loyalty and satisfaction.
-Global expansion: Extending the reach of Kraft Heinz brands while maintaining quality and consistency. 
+        <p style={text}>To become a leading world class organization and strengthen our position as a leading Middle Eastern company in the agrofood business, maintaining the highest quality standards of our products and services that will ensure our valuable clients’ satisfaction.
 </p>
       </div>
       <input type="text" placeholder="Enter your Passport ID" value={passportId} onChange={(e)=>setPassportId(e.target.value)} onFocus={inputFocus} onBlur={inputBlur} style={input}/>
