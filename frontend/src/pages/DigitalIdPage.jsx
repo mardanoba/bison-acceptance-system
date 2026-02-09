@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/b.webp";
+import logo from "../assets/kraftheinz.webp";
 
 function DigitalIdPage() {
   const { workId } = useParams();
@@ -138,9 +138,9 @@ function DigitalIdPage() {
       <div style={idCard}>
         {/* HEADER */}
         <div style={header}>
-          <img src={logo} alt="Bison Transport" style={logoStyle} />
+          <img src={logo} alt="Kraft Heinz" style={logoStyle} />
           <div style={headerText}>
-            <h2 style={{ margin: 0 }}>Bison Transport</h2>
+            <h2 style={{ margin: 0 }}>Kraft Heinz</h2>
             <p style={{ margin: 0, fontSize: "14px" }}>
               Official Employee Digital ID
             </p>
@@ -179,7 +179,7 @@ function DigitalIdPage() {
 
         {/* FOOTER */}
         <div style={footer}>
-          This card is the property of Bison. If found, please return
+          This card is the property of Kraft Heinz. If found, please return
           to the company office.
         </div>
       </div>
