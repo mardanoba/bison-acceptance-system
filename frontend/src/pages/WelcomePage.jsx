@@ -45,7 +45,7 @@ function WelcomePage() {
   return (
     <div style={container}>
       <img src="/images/kraftheinz.webp" alt="Kraft Hienz" style={imageStyle}/>
-      <h1 style={header}>Welcome to Kraft Heinz <img src="/images/caflag.webp" alt="Canada" width="15"></img>!</h1>
+      <h1 style={header}>Welcome to Kraft Heinz <img src="/images/caflag.webp" alt="Canada" width="40"></img>!</h1>
       <p style={text}>This is your acceptance system. You can check your acceptance status below.</p>
       <div style={section}>
         <h2 style={subHeader}>About the Company</h2>
@@ -54,7 +54,7 @@ function WelcomePage() {
         <h3 style={subHeader}>Mission</h3>
         <p style={text}>Kraft Heinz Canada’s mission emphasizes creating joy and memorable moments through food. The company focuses on providing high-quality, trusted products that consumers know and love, from iconic brands like Heinz, Kraft, and Oscar Mayer to a wide range of condiments, meals, and snacks. 
           The mission reflects a consumer-centric approach, ensuring that every product contributes to enjoyable eating experiences while maintaining nutritional value and quality.</p>
-        <img src="/images/kraftheinz3.webp" alt="Vision" style={imageStyle}/>
+        <img src="/images/kraftheinz3.jpg" alt="Vision" style={imageStyle}/>
         <h3 style={subHeader}>Vision</h3>
         <p style={text}>The company’s vision is to sustainably grow by delighting more consumers globally.This vision highlights three key pillars: 
 Sustainable growth: Prioritizing long-term, responsible business practices that protect resources and support the planet.
